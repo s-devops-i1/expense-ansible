@@ -31,6 +31,8 @@
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
         dest:  /tmp/frontend.zip
+        remote_src: yes
+
 
     - name: Start nginx
       ansible.builtin.systemd_service:
