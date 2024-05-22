@@ -1,9 +1,7 @@
-#dnf install nginx -y  &>>/tmp/expense.log
+
 #systemctl enable nginx &>>/tmp/expense.log
 #systemctl start nginx
-#rm -rf /usr/share/nginx/html/*
-#cp expense.conf /etc/nginx/default.d/expense.conf
-#curl -o /tmp/frontend.zip https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip &>>/tmp/expense.log
+
 #cd /usr/share/nginx/html
 #unzip /tmp/frontend.zip &>>/tmp/expense.log
 #
@@ -12,8 +10,36 @@
 
 - name: Plyabook of frontend
   hosts: all
+  become: yes
   tasks:
     - name: install nginx
       ansible.builtin.dnf:
         name: nginx
         state: installed
+
+    - name: Remove directory
+      ansible.builtin.file:
+        path: /usr/share/nginx/html/*
+        state: absent
+
+    - name: Copy config file
+      ansible.builtin.copy:
+        src: expense.conf
+        dest: /etc/nginx/default.d/expense.conf
+
+    - name: Download and Extract Apps contents
+      ansible.builtin.unarchive:
+        src: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
+        dest:  /tmp/frontend.zip
+
+    - name: Start nginx
+      ansible.builtin.systemd_service:
+        state: started
+        name: nginx
+        enabled: true
+
+
+
+
+
+
