@@ -51,11 +51,6 @@
         src: backend.service
         dest: /etc/systemd/system/backend.service
 
-    - name: install mysql client
-      ansible.builtin.dnf:
-        name: mysql
-        state: installed
-
     - name: Download and Extract Apps contents
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip
@@ -67,8 +62,13 @@
         path: /app
         state: latest
 
+    - name: Install python mysql client
+      ansible.builtin.pip:
+        name:
+          - cryptography
+          - PyMySQL
+        executable: pip3.9
 
-    # Import of sql script with encoding option
     - name: Load Schema
       community.mysql.mysql_db:
         state: import
