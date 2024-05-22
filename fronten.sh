@@ -17,4 +17,3 @@
       ansible.builtin.dnf:
         name: nginx
         state: installed
-
