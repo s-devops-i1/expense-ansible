@@ -30,7 +30,7 @@
     - name: Download and Extract Apps contents
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
-        dest:  /tmp/frontend.zip
+        dest:  /usr/share/nginx/html
         remote_src: yes
 
 
