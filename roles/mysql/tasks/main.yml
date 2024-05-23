@@ -24,10 +24,6 @@
         login_host: mysql-{{ env }}.shujathdevops.online
       register: mysql_db_connection
 
-    - name: printing mysql db connection details
-      ansible.builtin.debug:
-        msg: "{{ mysql_db_connection }}"
-
     - name: Setup MySQL Password
       ansible.builtin.shell: mysql_secure_installation --set-root-pass {{mysql_root_password}}
-      when: mysql_connection_output.failed is true
+      when: mysql_db_connection.failed is true
