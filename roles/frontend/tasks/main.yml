@@ -3,15 +3,16 @@
         name: nginx
         state: installed
 
+    - name: Copy config file
+      ansible.builtin.copy:
+        src: expense.conf
+        dest: /etc/nginx/default.d/expense.conf
+
     - name: Remove directory
       ansible.builtin.file:
         path: /usr/share/nginx/html/*
         state: absent
 
-    - name: Copy config file
-      ansible.builtin.copy:
-        src: expense.conf
-        dest: /etc/nginx/default.d/expense.conf
 
     - name: Download and Extract Apps contents
       ansible.builtin.unarchive:
