@@ -1,4 +1,5 @@
 - name: Playbook for {{ role_name }}
   hosts: all
+  become: yes
   roles:
     - "{{ role_name }}"
