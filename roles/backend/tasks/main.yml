@@ -35,6 +35,11 @@
           - PyMySQL
         executable: pip3.9
 
+    - name: install mysql
+      ansible.builtin.dnf:
+        name: mysql
+        state: installed
+
     - name: Load Schema
       community.mysql.mysql_db:
         state: import
