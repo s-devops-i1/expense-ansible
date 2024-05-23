@@ -9,14 +9,24 @@
         state: started
         enabled: yes
 
-    - name: Check the DB connection with our password
+    - name: Install python mysql client
+      ansible.builtin.pip:
+        name:
+          - cryptography
+          - PyMySQL
+        executable: pip3.9
+
+    - name: Get MySQL version with non-default credentials
       community.mysql.mysql_info:
         login_user: root
-        login_password: "{{mysql_root_password}}"
-        login_host: mysql-dev.rdevops6a.online
+        login_password: ExpenseApp@1
         filter: version
-      register: mysql_connection_output
-      ignore_errors: yes
+        login_host: mysql-{{ env }}.shujathdevops.online
+      register: "{{ mysql_db_connection }}"
+
+    - name: printing mysql db connection details
+      ansible.builtin.debug:
+        msg: "{{ mysql_db_connection }}"
 
     - name: Setup MySQL Password
       ansible.builtin.shell: mysql_secure_installation --set-root-pass {{mysql_root_password}}
