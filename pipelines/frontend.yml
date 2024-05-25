@@ -1,12 +1,12 @@
 format_version: 10
 pipelines:
-  ansible-pipeline:
+  ansible-pipeline-1:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
     materials:
-      git-9f16886:
+      git-649cad1:
         git: https://github.com/s-devops-i1/expense-ansible.git
         shallow_clone: false
         auto_update: true
@@ -20,16 +20,15 @@ pipelines:
             type: success
             allow_only_on_success: false
           jobs:
-            test-job:
+            my-job-1:
               timeout: 0
               tasks:
                 - exec:
                     arguments:
                       - ansible.sh
                       - frontend
-                    command: bash #bash ansible.sh frontend
+                    command: bash
                     run_if: passed
-
       - QA:
           fetch_materials: true
           keep_artifacts: false
@@ -38,7 +37,7 @@ pipelines:
             type: success
             allow_only_on_success: false
           jobs:
-            test-job:
+            my-job-1:
               timeout: 0
               tasks:
                 - exec:
@@ -46,7 +45,6 @@ pipelines:
                       - 03-vars.yml
                     command: ansible-playbook
                     run_if: passed
-
       - UAT:
           fetch_materials: true
           keep_artifacts: false
@@ -55,7 +53,7 @@ pipelines:
             type: success
             allow_only_on_success: false
           jobs:
-            test-job:
+            my-job-1:
               timeout: 0
               tasks:
                 - exec:
@@ -63,7 +61,6 @@ pipelines:
                       - 03-vars.yml
                     command: ansible-playbook
                     run_if: passed
-
       - PROD:
           fetch_materials: true
           keep_artifacts: false
@@ -72,7 +69,7 @@ pipelines:
             type: success
             allow_only_on_success: false
           jobs:
-            test-job:
+            my-job-1:
               timeout: 0
               tasks:
                 - exec:
