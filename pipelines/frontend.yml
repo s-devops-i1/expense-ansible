@@ -16,6 +16,8 @@ pipelines:
           fetch_materials: true
           keep_artifacts: false
           clean_workspace: false
+          environment_variables:
+             env: dev
           approval:
             type: success
             allow_only_on_success: false
