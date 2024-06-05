@@ -19,7 +19,7 @@ pipelines:
           environment_variables:
              env: dev
           approval:
-            type: success
+            type: manual
             allow_only_on_success: false
           jobs:
             my-job-1:
