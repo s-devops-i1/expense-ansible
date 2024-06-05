@@ -33,7 +33,7 @@
         name:
           - cryptography
           - PyMySQL
-        executable: pip3.9
+        executable: pip3.11
 
     - name: install mysql
       ansible.builtin.dnf:
