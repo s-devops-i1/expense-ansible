@@ -14,7 +14,7 @@
         name:
           - cryptography
           - PyMySQL
-        executable: pip3.9
+        executable: pip3.11
 
     - name: check DB connection with our own password
       community.mysql.mysql_info:
