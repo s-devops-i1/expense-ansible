@@ -20,6 +20,10 @@
         enabled: true
         daemon_reload: true
 
+    - name: import newrelic
+      ansible.builtin.import_role:
+        name: newrelic
+        tasks_from: nginx
 
 
 
