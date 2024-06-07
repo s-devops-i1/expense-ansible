@@ -2,8 +2,6 @@
   ansible.builtin.file:
     path: "{{ app_dir }}"
     state: absent
-    owner: "{{ app_user }}"
-    group: "{{ app_user }}"
 
 - name: Create a directory
   ansible.builtin.file:
