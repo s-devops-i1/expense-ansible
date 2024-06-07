@@ -11,7 +11,7 @@
 
     - name: Add the Appl user
       ansible.builtin.user:
-        name: expense
+        name: "{{ app_user }}"
 
     - name: Copy file
       ansible.builtin.template:
