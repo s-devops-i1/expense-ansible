@@ -5,6 +5,8 @@ pipelines:
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
+  secure_variables:
+    TESTV: AES:K8WJAXCsX7WIcHtfco3jhg==:l4uHI7RIB8GGvRSosaHotxvolqU2C4V0iHOdGOchxsE=
     materials:
       git-649cad1:
         git: https://github.com/s-devops-i1/expense-ansible.git
