@@ -5,14 +5,14 @@ pipelines:
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
-  secure_variables:
-    TESTV: AES:K8WJAXCsX7WIcHtfco3jhg==:l4uHI7RIB8GGvRSosaHotxvolqU2C4V0iHOdGOchxsE=
     materials:
       git-649cad1:
         git: https://github.com/s-devops-i1/expense-ansible.git
         shallow_clone: false
         auto_update: true
         branch: main
+  secure_variables:
+    TESTV: AES:d/rrH3GhSomxLPMVJLWjug==:8tcrt6J9ocdPrv7QEChyyA==
     stages:
       - DEV:
           fetch_materials: true
