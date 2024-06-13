@@ -28,6 +28,7 @@
         path: /app
         state: latest
 
+
     - name: Install python mysql client
       ansible.builtin.pip:
         name:

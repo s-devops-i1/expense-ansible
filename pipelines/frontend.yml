@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  ansible-pipeline-1:
+  frontend:
     group: Ansible
     label_template: ${COUNT}
     lock_behavior: none
