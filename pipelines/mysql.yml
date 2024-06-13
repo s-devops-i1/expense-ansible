@@ -11,8 +11,6 @@ pipelines:
         shallow_clone: false
         auto_update: true
         branch: main
-  secure_variables:
-    TESTV: AES:d/rrH3GhSomxLPMVJLWjug==:8tcrt6J9ocdPrv7QEChyyA==
     stages:
       - DEV:
           fetch_materials: true
