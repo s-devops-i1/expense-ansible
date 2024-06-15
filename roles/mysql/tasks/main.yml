@@ -19,12 +19,12 @@
     - name: check DB connection with our own password
       community.mysql.mysql_info:
         login_user: root
-        login_password: ExpenseApp@1
+        login_password: "{{mysql_root_password}}"
         filter: version
         login_host: mysql-{{ env }}.shujathdevops.online
       register: mysql_db_connection
       ignore_errors: yes
 
     - name: Setup MySQL Password
-      ansible.builtin.shell: mysql_secure_installation --set-root-pass ExpenseApp@1
+      ansible.builtin.shell: mysql_secure_installation --set-root-pass {{mysql_root_password}}
       when: mysql_db_connection.failed is true
