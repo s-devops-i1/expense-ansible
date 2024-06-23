@@ -13,4 +13,4 @@
 - name: rsyslog configration
   ansible.builtin.import_role:
     name: rsyslog
-  when: rsyslog_needed
+  when: rsyslog_config_needed
